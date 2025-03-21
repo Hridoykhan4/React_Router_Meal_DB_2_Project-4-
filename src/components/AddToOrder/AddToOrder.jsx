@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getOrderedItems, removeFromLS } from "../utils/localStorage";
-import Meal from "../Meal/Meal";
+// import Meal from "../Meal/Meal";
 
 const AddToOrder = () => {
   const [orderItems, setOrderItems] = useState([]);
@@ -9,10 +9,12 @@ const AddToOrder = () => {
 
   useEffect(() => {
     const storedItems = getOrderedItems();
-    const items = meals.filter((meal) =>
-      storedItems.includes(parseInt(meal.idMeal))
-    );
-    setOrderItems(items);
+    if (meals.length) {
+      const items = meals.filter((meal) =>
+        storedItems.includes(parseInt(meal.idMeal))
+      );
+      setOrderItems(items);
+    }
   }, [meals]);
 
   const handleSort = () => {

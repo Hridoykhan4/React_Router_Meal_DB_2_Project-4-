@@ -7,7 +7,7 @@ const addToLS = (id) => {
   const orderItems = getOrderedItems();
   if (!orderItems.includes(id)) {
     orderItems.push(id);
-    saveToLS();
+    saveToLS(orderItems);
   } else {
     alert("");
   }
