@@ -1,2 +1,2 @@
 Live Link 
-Click [https://lambent-trifle-8b57db.netlify.app/orderMeals]
+Click [https://lambent-trifle-8b57db.netlify.app/]
