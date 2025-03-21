@@ -35,18 +35,16 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://fakestoreapi.com/products/${params.productId}`),
       },
-      {
-
-      },
+      {},
       {
         path: "/meals",
         element: <Meals></Meals>,
         loader: getMealData,
       },
       {
-        path: '/orderMeals',
+        path: "/orderMeals",
         element: <AddToOrder></AddToOrder>,
-        loader: getMealData
+        loader: getMealData,
       },
       {
         path: "/meal/:mealId",

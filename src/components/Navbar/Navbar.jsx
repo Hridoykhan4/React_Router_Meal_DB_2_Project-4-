@@ -29,6 +29,9 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/meals">All Meals</NavLink>
+      </li>
+      <li>
         <NavLink to="/orderMeals">Order Meals</NavLink>
       </li>
       <li>
@@ -40,10 +43,6 @@ const Navbar = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-      <li>
-        <NavLink to="/meals">Meals</NavLink>
-      </li>
-     
     </>
   );
 
@@ -124,7 +123,7 @@ const Navbar = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
         >
-         {links}
+          {links}
         </ul>
       </div>
     </div>

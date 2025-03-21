@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { getOrderedItems } from "../utils/localStorage";
+import { getOrderedItems, removeFromLS } from "../utils/localStorage";
 import Meal from "../Meal/Meal";
 
 const AddToOrder = () => {
@@ -21,6 +21,13 @@ const AddToOrder = () => {
     );
     setOrderItems(sortMeal);
   };
+
+  const handleCancelOrder = (id) => {
+    const remaining = orderItems.filter((meal) => meal?.idMeal !== id);
+    setOrderItems(remaining);
+    removeFromLS(id);
+  };
+
   return (
     <div className="my-3 px-6">
       <h3 className="text-2xl font-bold mb-2 underline text-red-600">
@@ -33,7 +40,28 @@ const AddToOrder = () => {
 
       <div className="grid gap-5 md:grid-cols-2">
         {orderItems.map((orderItem) => (
-          <Meal key={orderItem?.idMeal} meal={orderItem}></Meal>
+          //   <Meal key={orderItem?.idMeal} meal={orderItem}></Meal>
+          <div key={orderItem.idMeal} className="card bg-base-100  shadow-sm">
+            <figure className="">
+              <img
+                src={orderItem?.strMealThumb}
+                alt="Shoes"
+                className="rounded-xl w-full object-cover h-[300px]"
+              />
+            </figure>
+            <div className="card-body ">
+              <h2 className="card-title">{orderItem?.strMeal}</h2>
+              <p>{orderItem?.strInstructions}</p>
+              <div className="card-actions">
+                <button
+                  onClick={() => handleCancelOrder(orderItem?.idMeal)}
+                  className="btn btn-error text-white"
+                >
+                  Cancel Order
+                </button>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

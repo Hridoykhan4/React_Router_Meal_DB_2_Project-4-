@@ -7,10 +7,23 @@ const addToLS = (id) => {
   const orderItems = getOrderedItems();
   if (!orderItems.includes(id)) {
     orderItems.push(id);
-    localStorage.setItem("order-items", JSON.stringify(orderItems));
+    saveToLS();
   } else {
     alert("");
   }
 };
 
-export { addToLS, getOrderedItems };
+const saveToLS = (items) => {
+  localStorage.setItem("order-items", JSON.stringify(items));
+};
+
+const removeFromLS = (id) => {
+  const storedOrder = getOrderedItems();
+
+  const remaining = [...storedOrder].filter(
+    (storeId) => storeId !== parseInt(id)
+  );
+  saveToLS(remaining);
+};
+
+export { addToLS, getOrderedItems, removeFromLS };
